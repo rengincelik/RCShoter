@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public FloatingJoystick joystick;
+    public Rigidbody2D rb;
     public float speed;
     Vector3 moveInput;
-    void Update()
-    {
-        moveInput = new Vector3(joystick.Horizontal, joystick.Vertical, 0.00f);
-        transform.Translate(moveInput * speed * Time.deltaTime);
+    private void FixedUpdate() {
+        moveInput = new Vector2(joystick.Horizontal, joystick.Vertical);
+        rb.linearVelocity=moveInput*speed;
     }
 }
